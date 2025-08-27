@@ -11,6 +11,9 @@ import {
   MobileNavMenu,
 } from "@/components/ui/resizable-navbar";
 import { useState } from "react";
+import Herosection from "./HeroSection";
+import ThemeToggleButton from "../ui/theme-toggle-button";
+import { User } from "lucide-react";
 
 export function Header() {
   const navItems = [
@@ -31,14 +34,21 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <div className="relative w-full">
+    <>
       <Navbar>
         {/* Desktop Navigation */}
         <NavBody>
           <NavbarLogo />
           <NavItems items={navItems} />
           <div className="flex items-center gap-4">
-            <NavbarButton variant="secondary">Account</NavbarButton>
+            
+          <NavbarButton
+                
+                variant="primary"
+                className="w-full flex items-center justify-center gap-1"
+              >
+               <User size={18}/>
+              </NavbarButton>            <ThemeToggleButton  variant="circle" start="bottom-right" />
           </div>
         </NavBody>
 
@@ -66,22 +76,25 @@ export function Header() {
                 <span className="block">{item.name}</span>
               </a>
             ))}
-            <div className="flex w-full flex-col gap-4">
+            <div className="flex items-center justify-between w-full gap-4">
               <NavbarButton
-                onClick={() => setIsMobileMenuOpen(false)}
+                
                 variant="primary"
-                className="w-full"
+                className="w-full flex items-center justify-center gap-1"
               >
-                Account
+                 <User size={18}/>
               </NavbarButton>
-              
+              <ThemeToggleButton  variant="circle" start="bottom-right" />
+
             </div>
           </MobileNavMenu>
         </MobileNav>
       </Navbar>
+    
 
-      {/* Navbar */}
-    </div>
+     
+    </>
   );
 }
+
 
